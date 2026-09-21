@@ -3,408 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us｜關於我們</title>
-    <!-- Google Fonts: M PLUS Rounded 1c & Noto Sans TC -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>我們的關係紅綠燈｜Our Relationship Traffic Lights</title>
     <style>
         :root {
-            --bg-color: #F4F7F6;
-            --bg-cream: #FAF8F5;
-            --primary-blue: #6C8EA4;
-            --primary-blue-dark: #527186;
-            --secondary-green: #9BB5A6;
-            --accent-soft: #E8F0EC;
-            --accent-pink-soft: #F9EBEA;
-            --text-dark: #37474F;
-            --text-muted: #78909C;
+            --primary: #709CA7;          /* 主色：質感莫蘭迪藍 */
+            --primary-hover: #5A838E;
+            --secondary: #D4B29E;        /* 輔色：溫柔奶茶色 */
+            --secondary-hover: #C19A6B;
+            --bg-color: #F4F7F8;         /* 背景：極淺柔藍灰 */
             --card-bg: #FFFFFF;
-            --shadow-soft: 0 12px 32px rgba(108, 142, 164, 0.08);
-            --shadow-hover: 0 16px 40px rgba(108, 142, 164, 0.15);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
+            --text-main: #334155;
+            --text-sub: #64748B;
+            --green: #6DA382;
+            --yellow: #E0A96D;
+            --red: #D96B6B;
+            --purple: #8A7B9B;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans TC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(var(--bg-cream) 50%, var(--bg-color) 100%);
-            color: var(--text-dark);
-            min-height: 100vh;
+            color: var(--text-main);
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 20px 15px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* 背景心形水印 */
-        body::before {
-            content: '♡';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(280px, 50vw, 550px);
-            color: rgba(155, 181, 166, 0.06);
-            z-index: 0;
-            pointer-events: none;
-            font-weight: 300;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             width: 100%;
             max-width: 680px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(112, 156, 167, 0.12);
+            padding: 35px 25px;
             position: relative;
-            z-index: 1;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            padding: 40px 32px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: #E2E8F0;
+            border-radius: 4px;
+            margin-bottom: 20px;
             overflow: hidden;
         }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 28px 20px;
-            }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 0.85em;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 1.6em;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .love-note {
+            background-color: #F7F3EF;
+            border-left: 4px solid var(--secondary);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #52463E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .intro-box {
+            background-color: #F0F5F6;
+            border-left: 4px solid var(--primary);
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 0.92em;
+            line-height: 1.7;
+            color: #334155;
+            margin-bottom: 25px;
+        }
+
+        .role-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .role-btn {
+            padding: 20px;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            background: white;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-main);
+        }
+
+        .role-btn:hover, .role-btn.selected {
+            border-color: var(--primary);
+            background-color: #EBF3F5;
+            color: var(--primary);
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-            color: #FFFFFF;
-            border: none;
-            border-radius: 50px;
-            padding: 16px 36px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(108, 142, 164, 0.25);
-            letter-spacing: 1px;
+            display: block;
             width: 100%;
-            text-decoration: none;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.05em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(112, 156, 167, 0.25);
+            margin-top: 10px;
         }
 
         .btn:hover {
+            background-color: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(108, 142, 164, 0.35);
         }
 
-        .btn:active {
-            transform: translateY(1px);
+        .btn-milk {
+            background-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(212, 178, 158, 0.3);
+        }
+
+        .btn-milk:hover {
+            background-color: var(--secondary-hover);
         }
 
         .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 1.5px solid var(--primary-blue);
+            background-color: transparent;
+            color: var(--text-sub);
+            border: 2px solid #E2E8F0;
             box-shadow: none;
         }
 
         .btn-outline:hover {
-            background: var(--accent-soft);
-            color: var(--primary-blue-dark);
+            background-color: #F8FAFC;
+            color: var(--text-main);
+            transform: none;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 28px;
-        }
-
-        h1.main-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-blue-dark);
-            text-align: center;
-            margin-bottom: 24px;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary-green);
-            text-align: center;
-            margin-bottom: 28px;
-            font-weight: 500;
-        }
-
-        .prose {
-            color: var(--text-dark);
-            line-height: 1.85;
-            font-size: 1rem;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .prose p {
-            margin-bottom: 16px;
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(155, 181, 166, 0.4), transparent);
-            margin: 28px 0;
-            width: 100%;
-        }
-
-        .user-select-container {
-            margin: 24px 0 32px 0;
-            text-align: center;
-        }
-
-        .user-select-label {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-            display: block;
-        }
-
-        .user-options {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .user-btn {
-            flex: 1;
-            max-width: 160px;
-            padding: 14px;
-            border-radius: var(--radius-md);
-            border: 2px solid var(--accent-soft);
-            background: var(--bg-cream);
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .user-btn.active {
-            border-color: var(--primary-blue);
-            background: var(--accent-soft);
-            color: var(--primary-blue-dark);
-            font-weight: 700;
-        }
-
-        .parts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin: 24px 0 32px 0;
-        }
-
-        .part-mini-card {
-            background: var(--bg-cream);
-            border-radius: var(--radius-sm);
-            padding: 12px;
-            text-align: center;
-            font-size: 0.82rem;
-            color: var(--primary-blue-dark);
-            border: 1px solid rgba(155, 181, 166, 0.2);
-            transition: transform 0.2s;
-        }
-
-        .part-mini-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .quiz-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-        }
-
-        .progress-container {
-            flex: 1;
-            margin-right: 16px;
-        }
-
-        .progress-bar-bg {
-            height: 8px;
-            background: var(--accent-soft);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary-green), var(--primary-blue));
-            border-radius: 10px;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        .progress-text {
-            font-size: 0.9rem;
-            color: var(--primary-blue);
-            font-weight: 700;
-            min-width: 48px;
-            text-align: right;
-        }
-
-        .part-tag {
+        .section-tag {
             display: inline-block;
-            background: var(--accent-soft);
-            color: var(--primary-blue-dark);
-            padding: 6px 14px;
+            background: #EBF3F5;
+            color: var(--primary);
+            font-size: 0.8em;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
         }
 
         .question-title {
-            font-size: 1.25rem;
-            color: var(--text-dark);
-            font-weight: 700;
+            font-size: 1.2em;
+            font-weight: bold;
             margin-bottom: 20px;
             line-height: 1.5;
+            color: var(--text-main);
         }
 
-        .options-list {
-            display: flex;
-            flex-direction: column;
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .option-item {
-            background: var(--bg-cream);
-            border: 2px solid transparent;
-            border-radius: var(--radius-md);
-            padding: 16px 20px;
+        .option-btn {
+            padding: 14px 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 14px;
+            background: white;
             cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            position: relative;
-        }
-
-        .option-item:hover {
-            background: #FFFFFF;
-            border-color: rgba(108, 142, 164, 0.3);
-            transform: translateX(3px);
-        }
-
-        .option-item.selected {
-            background: #FFFFFF;
-            border-color: var(--primary-blue);
-            box-shadow: 0 4px 14px rgba(108, 142, 164, 0.12);
-        }
-
-        .option-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 26px;
-            height: 26px;
-            background: var(--accent-soft);
-            color: var(--primary-blue-dark);
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .option-item.selected .option-badge {
-            background: var(--primary-blue);
-            color: #FFFFFF;
-        }
-
-        .option-content {
-            font-size: 0.98rem;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        .option-content strong {
-            display: block;
-            color: var(--primary-blue-dark);
-            margin-bottom: 4px;
-            font-size: 1.02rem;
-        }
-
-        .text-input-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        textarea.custom-input {
-            width: 100%;
-            height: 140px;
-            padding: 16px;
-            border-radius: var(--radius-md);
-            border: 2px solid var(--accent-soft);
-            background: var(--bg-cream);
-            font-size: 1rem;
-            color: var(--text-dark);
-            resize: none;
-            outline: none;
-            transition: border-color 0.3s;
-            line-height: 1.6;
-        }
-
-        textarea.custom-input:focus {
-            border-color: var(--primary-blue);
-            background: #FFFFFF;
-        }
-
-        .quick-helper-btn {
-            align-self: flex-start;
-            background: var(--accent-soft);
-            color: var(--primary-blue-dark);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
+            text-align: left;
+            font-size: 0.98em;
             transition: all 0.2s;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 6px;
+            color: var(--text-main);
+            user-select: none;
         }
 
-        .quick-helper-btn:hover {
-            background: var(--secondary-green);
-            color: #FFFFFF;
+        .option-btn:hover {
+            border-color: var(--primary);
+            background-color: #F4F8F9;
         }
 
-        footer.site-footer {
-            margin-top: 36px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            font-weight: 300;
+        .option-btn.selected {
+            border-color: var(--primary);
+            background-color: #EBF3F5;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #E2E8F0;
+            border-radius: 14px;
+            font-size: 0.95em;
+            margin-top: 10px;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            border-color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .hidden {
@@ -412,771 +263,577 @@
         }
 
         .code-box {
-            background: var(--bg-cream);
-            border: 2px dashed var(--secondary-green);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            text-align: center;
-            margin: 20px 0;
+            background-color: #F8FAFC;
+            padding: 15px;
+            border-radius: 12px;
             word-break: break-all;
             font-family: monospace;
-            font-size: 0.95rem;
-            color: var(--primary-blue-dark);
-            user-select: all;
-        }
-
-        .quote-card {
-            background: linear-gradient(135deg, rgba(232, 240, 236, 0.6), rgba(250, 248, 245, 0.8));
-            border-left: 4px solid var(--secondary-green);
-            padding: 20px;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            margin: 20px 0;
-            text-align: left;
-        }
-
-        .quote-card p {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        .multi-hint {
-            font-size: 0.85rem;
-            color: var(--secondary-green);
-            font-weight: 500;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        /* 彈窗 Modal 樣式 */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(55, 71, 79, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: #FFFFFF;
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 600px;
-            max-height: 85vh;
+            font-size: 0.85em;
+            margin: 15px 0;
+            max-height: 120px;
             overflow-y: auto;
-            padding: 28px 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            position: relative;
+            border: 1px solid #CBD5E1;
+            color: #475569;
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .compare-card {
+            border-bottom: 1px solid #E2E8F0;
+            padding: 15px 0;
         }
 
-        .close-modal-btn {
-            background: transparent;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
+        .compare-tag {
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
         }
 
-        .compare-item-card {
-            background: var(--bg-cream);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--primary-blue);
-        }
+        .bg-green { background-color: var(--green); }
+        .bg-yellow { background-color: var(--yellow); }
+        .bg-red { background-color: var(--red); }
+        .bg-purple { background-color: var(--purple); }
 
-        .compare-item-title {
-            font-weight: 700;
-            color: var(--primary-blue-dark);
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .compare-user-row {
-            display: flex;
-            gap: 12px;
-            font-size: 0.9rem;
-            margin-top: 6px;
-            line-height: 1.5;
-        }
-
-        .compare-user-tag {
-            font-weight: 700;
-            min-width: 50px;
-            color: var(--secondary-green);
+        .score-badge {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- 1. 首頁 (Landing Page) -->
-        <div id="home-screen" class="card">
-            <h1 class="main-title">《About Us｜關於我們》</h1>
-            <p class="subtitle">讓我們，好好談談</p>
+<div class="container">
 
-            <div class="prose">
-                <p>有些事情，不是誰對誰錯。<br>只是我們看待愛的方式，可能不太一樣。</p>
-                <div class="divider"></div>
-                <p>我們很愛彼此，<br>但「愛」有時候不是唯一需要被理解的事情。</p>
-                <p>我們怎麼看待陪伴、自由、付出、界線、爭吵、未來，<br>以及我們希望另一半成為什麼樣的人，<br>都可能影響著我們怎麼相處。</p>
-                <p>所以想邀請妳，和我一起回答這些問題。</p>
-                <p>不是為了找出誰比較對，<br>也不是為了證明誰比較愛。</p>
-                <p>只是想知道——<br><strong>「原來，妳是這樣想的。」</strong></p>
-                <p>然後，我們再一起想想，<br><strong>「那我們可以怎麼走得更好？」</strong></p>
-            </div>
+    <!-- 1. 首頁與角色選擇 -->
+    <div id="page-home">
+        <h1>🩵 Our Relationship Traffic Lights</h1>
+        <p class="subtitle">我們的關係紅綠燈<br><small>不是為了限制彼此，而是為了更了解彼此。</small></p>
 
-            <div class="user-select-container">
-                <span class="user-select-label">我是誰？</span>
-                <div class="user-options">
-                    <button class="user-btn active" onclick="selectUser('阿寶')">阿寶</button>
-                    <button class="user-btn" onclick="selectUser('小乖')">小乖</button>
-                </div>
-            </div>
-
-            <div class="parts-grid">
-                <div class="part-mini-card">PART 1<br>理解愛</div>
-                <div class="part-mini-card">PART 2<br>看待付出</div>
-                <div class="part-mini-card">PART 3<br>現在與未來</div>
-                <div class="part-mini-card">PART 4<br>想要的伴侶</div>
-                <div class="part-mini-card">PART 5<br>溝通方式</div>
-                <div class="part-mini-card">PART 6<br>現在狀態</div>
-                <div class="part-mini-card">PART 7<br>我們的以後</div>
-            </div>
-
-            <button class="btn" id="start-btn" onclick="startQuestionnaire()">開始填寫 →</button>
-            <div style="margin-top: 14px;">
-                <button class="btn btn-outline" onclick="openCompareModal()"><i class="fa-solid fa-magnifying-glass-chart"></i> 比對兩人的專屬代碼</button>
-            </div>
+        <div class="love-note">
+            我知道我們最近都有點累了，但希望「我們」可以更好。<br>
+            加油！我都會陪著妳一起度過的 🤍
         </div>
 
-        <!-- 2. 單元開場小卡畫面 -->
-        <div id="section-screen" class="card hidden">
-            <span class="part-tag" id="section-part-tag">PART 01</span>
-            <h1 class="main-title" id="section-title" style="text-align: left; margin-bottom: 12px;"></h1>
-            
-            <div id="section-card-box" class="quote-card">
-                <p id="section-intro-text"></p>
-            </div>
-
-            <div class="prose" style="text-align: left; margin-top: 24px;">
-                <p id="section-quote" style="font-size: 1.1rem; color: var(--primary-blue-dark); font-weight: 500;"></p>
-            </div>
-
-            <button class="btn" id="section-next-btn" onclick="enterQuestionsOfSection()">了解彼此 →</button>
+        <p style="text-align: center; font-weight: bold; margin-bottom: 12px; color: var(--text-main);">請選擇妳/你的身分：</p>
+        <div class="role-box">
+            <div class="role-btn" id="role-abao" onclick="selectRole('阿寶')">👦 阿寶</div>
+            <div class="role-btn" id="role-xiaoguai" onclick="selectRole('小乖')">👧 小乖</div>
         </div>
 
-        <!-- 3. 題目頁面 -->
-        <div id="question-screen" class="card hidden">
-            <div class="quiz-header">
-                <div class="progress-container">
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" id="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="progress-text" id="progress-text">1 / 42</div>
-            </div>
-
-            <span class="part-tag" id="q-part-tag">PART 1</span>
-            
-            <div class="question-title" id="q-title"></div>
-            <span class="multi-hint hidden" id="q-hint"></span>
-
-            <div id="options-container" class="options-list"></div>
-
-            <div id="text-container" class="text-input-container hidden">
-                <textarea id="open-textarea" class="custom-input" placeholder="寫下妳的想法..."></textarea>
-                <button class="quick-helper-btn" onclick="fillQuickHelper()">
-                    <i class="fa-solid fa-cloud"></i> 我需要想一下
-                </button>
-            </div>
-
-            <div class="btn-group">
-                <button class="btn btn-outline" id="prev-btn" onclick="prevQuestion()">上一題</button>
-                <button class="btn" id="next-btn" onclick="nextQuestion()">下一題 →</button>
-            </div>
+        <div class="intro-box">
+            這不是一份用來限制彼此的規則，也不是要找出誰對誰錯。<br><br>
+            我們本來就是兩個不同的人，對很多事情的感受也不一定一樣。希望透過這份問卷，更了解彼此在意什麼、什麼會讓彼此不安，以及什麼事情可以放心交給對方自由。<br><br>
+            🟢 綠燈：我可以接受 / 完全沒差 / 完全同意<br>
+            🟡 黃燈：偶爾沒關係，但希望提前告知或討論<br>
+            🔴 紅燈：這是我的重要界線 / 完全不行<br>
+            ❓ 不確定：我目前不知道，希望我們一起討論<br><br>
+            <strong>我們的目標不是讓彼此答案一樣，而是找到「兩個人都能舒服地待在裡面」的方式。✨</strong>
         </div>
 
-        <!-- 4. 結束頁面 -->
-        <div id="ending-screen" class="card hidden">
-            <h1 class="main-title">《我們的答案》</h1>
-            <p class="subtitle">for us, with love.</p>
-
-            <div class="quote-card" style="text-align: center; border-left: none; border-top: 3px solid var(--secondary-green);">
-                <p style="font-size: 1.1rem; line-height: 2; color: var(--primary-blue-dark);">
-                    「我的愛，謝謝妳願意讓我更靠近妳一點。」
-                </p>
-            </div>
-
-            <div class="prose">
-                <p>我們不一定要有一模一樣的答案。</p>
-                <p>我只希望，知道答案不一樣以後，<br>我們還願意牽著彼此的手，<br>找一個屬於我們的答案。 🩵</p>
-            </div>
-
-            <div class="divider"></div>
-
-            <p style="text-align: center; font-weight: 500; color: var(--primary-blue-dark);">這是妳填寫完成的專屬代碼：</p>
-            <div class="code-box" id="share-code-box">生成中...</div>
-
-            <button class="btn" onclick="copyShareCode()"><i class="fa-regular fa-copy"></i> 複製專屬連結代碼</button>
-            
-            <div style="margin-top: 14px; display: flex; gap: 10px;">
-                <button class="btn btn-outline" style="flex: 1;" onclick="openCompareModal()">直接比對兩人代碼</button>
-                <button class="btn btn-outline" style="flex: 1;" onclick="restart()">回到首頁</button>
-            </div>
-        </div>
-
-        <footer class="site-footer">
-            for us, with love.
-        </footer>
+        <button class="btn btn-milk" onclick="startQuiz()">開始填寫</button>
+        <button class="btn btn-outline" style="margin-top: 12px;" onclick="showPage('page-compare-input')">🔍 查看/比較兩人答案</button>
     </div>
 
-    <!-- 5. 代碼比對彈窗 Modal -->
-    <div id="compare-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 style="color: var(--primary-blue-dark);">《雙人答案比對》</h3>
-                <button class="close-modal-btn" onclick="closeCompareModal()">&times;</button>
+    <!-- 2. 答題頁面 -->
+    <div id="page-quiz" class="hidden">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progress-text">1 / 130</div>
+
+        <div class="question-card">
+            <div class="section-tag" id="section-tag">第二部分｜異性相處 ❤️‍🔥</div>
+            <div class="question-title" id="question-title">題目載入中...</div>
+
+            <div id="options-container" class="options-grid"></div>
+
+            <div id="note-container" class="hidden">
+                <p style="font-size: 0.85em; color: var(--text-sub); margin-top: 10px;">補充說明 / 為什麼？（選填）：</p>
+                <textarea id="note-input" rows="2" placeholder="想讓對方更了解你的感受，可以補充在這裡..."></textarea>
             </div>
+        </div>
 
-            <div id="compare-input-section">
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">請分別貼上兩人的專屬代碼進行比對：</p>
-
-                <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-blue-dark);">阿寶的代碼：</label>
-                <textarea id="code-input-1" class="custom-input" style="height: 70px; margin-top: 6px; margin-bottom: 16px;" placeholder="貼上第一組代碼..."></textarea>
-
-                <label style="font-size: 0.85rem; font-weight: 700; color: var(--primary-blue-dark);">小乖的代碼：</label>
-                <textarea id="code-input-2" class="custom-input" style="height: 70px; margin-top: 6px; margin-bottom: 20px;" placeholder="貼上第二組代碼..."></textarea>
-
-                <button class="btn" onclick="runComparison()">開始比對結果 →</button>
-            </div>
-
-            <div id="compare-result-section" class="hidden">
-                <div id="compare-result-list"></div>
-                <button class="btn btn-outline" style="margin-top: 20px;" onclick="resetCompareInput()">重新比對其他代碼</button>
-            </div>
+        <div class="nav-buttons">
+            <button class="btn btn-outline" id="btn-prev" onclick="prevQuestion()">上一題</button>
+            <button class="btn" id="btn-next" onclick="nextQuestion()">下一題</button>
         </div>
     </div>
 
-    <script>
-        let currentUser = '阿寶';
-        let currentQuestionIndex = 0;
-        let answers = {};
-        let currentSectionIndex = -1;
+    <!-- 3. 完成頁面 -->
+    <div id="page-finish" class="hidden">
+        <h1>謝謝妳願意讓我更了解妳 🤍</h1>
+        
+        <div class="love-note" style="margin-top: 15px;">
+            謝謝妳認真填完～辛苦了！<br>
+            無論結果如何，我都想讓妳知道：不論遇到什麼問題，我都會一直陪著妳一起面對、一起變好！加油 🩵
+        </div>
 
-        const SECTIONS = [
-            {
-                partTag: 'PART 01 · HOW WE UNDERSTAND LOVE',
-                title: '💞 我們怎麼理解「愛」？',
-                introCard: '愛，對妳來說是什麼？\n\n每個人愛人的方式都不一樣。\n有人覺得，只要心裡一直愛著，就已經足夠；\n有人覺得，愛需要被看見、被感受到。\n\n沒有哪一種才是正確答案。\n我們只是想知道——\n「原來，妳是這樣理解愛的。」',
-                quote: '「我想更懂的，不只是妳愛不愛我，而是妳是怎麼愛一個人的。」',
-                buttonText: '了解彼此的愛 →',
-                startIndex: 0,
-                endIndex: 3
-            },
-            {
-                partTag: 'PART 02 · EFFORT & GIVING',
-                title: '🌱 我們怎麼看「付出」？',
-                introCard: '愛，除了感受，還需要做些什麼？\n\n我們可能都很愛對方，卻不一定用相同的方式付出。\n\n有些人會主動觀察、記住細節；\n有些人習慣等對方說出需要；\n也有人覺得，為了彼此做一些改變，本來就是愛的一部分。\n\n所以這一章想問的不是：「誰付出比較多？」\n而是：「什麼樣的付出，會讓妳感受到愛？」',
-                quote: '「我願意學著用妳感受得到的方式愛妳，也想讓妳知道，我需要的是什麼。」',
-                buttonText: '看看彼此怎麼付出 →',
-                startIndex: 4,
-                endIndex: 7
-            },
-            {
-                partTag: 'PART 03 · NOW & FOREVER',
-                title: '🧭 我們怎麼看「現在與未來」？',
-                introCard: '我們是在享受現在，還是在一起走向未來？\n\n有人習慣把幸福放在當下，有人愛著愛著，就會開始想像以後。\n\n想一起旅行、一起生活、一起成家，\n又或者只是很單純地想著：\n「希望明年這個時候，妳還在我身邊。」\n\n沒有誰比較認真，也沒有誰比較不認真。\n只是我們想知道——「妳眼裡的我們，有沒有明天？」',
-                quote: '「相遇很美好。而我更想知道的是，相遇之後，我們想一起走去哪裡。」',
-                buttonText: '看看彼此眼中的未來 →',
-                startIndex: 8,
-                endIndex: 10
-            },
-            {
-                partTag: 'PART 04 · THE PARTNER WE WANT',
-                title: '🫶 我們想要的是什麼樣的伴侶？',
-                introCard: '如果要被愛，妳希望被怎麼愛？\n\n我們常常會說「我愛妳」，卻很少真正說清楚：\n「什麼會讓我感覺自己被愛？」\n\n是被陪伴、被理解、被記住？\n是對方願意主動靠近，還是給自己足夠的自由？\n\n這一章，沒有理想型。我們想認識的是——\n「妳希望身邊的那個人，怎麼對待妳？」',
-                quote: '「我想成為妳喜歡的伴侶，也想知道，怎樣的我會讓妳覺得幸福。」',
-                buttonText: '認識彼此想要的愛 →',
-                startIndex: 11,
-                endIndex: 18
-            },
-            {
-                partTag: 'PART 05 · HOW WE COMMUNICATE',
-                title: '🗣️ 我們怎麼溝通？',
-                introCard: '我的愛人，我知道妳有些話，不是不想說，只是不知道怎麼說。\n\n我們都有過這種時候：\n明明心裡有很多話，卻不知道從哪裡開始。\n明明不是不在乎，卻怕在說出口的時候變成了另一個樣子。\n\n所以這一章不要求我們立刻把所有事情說清楚。\n我們先一起了解：\n「當妳不知道怎麼說的時候，妳需要我怎麼陪妳？」',
-                quote: '「我不需要妳每一次都馬上說出答案。我只希望我們慢慢學會，怎麼走進彼此的心裡。」',
-                buttonText: '找到適合我們的說法 →',
-                startIndex: 19,
-                endIndex: 22
-            },
-            {
-                partTag: 'PART 06 · WHERE WE ARE NOW',
-                title: '🌧️ 我們現在的狀態',
-                introCard: '那麼現在的我們，還好嗎？\n\n走到這裡，我們已經聊了很多「應該怎麼樣」。\n但比起應該，我們更想知道的是——\n「現在的妳，真的快樂嗎？」\n\n有沒有覺得幸福？有沒有覺得累？\n有沒有一些委屈還放在心裡？\n有沒有什麼地方，其實很希望我們改變？\n\n這一章沒有標準答案。只想讓我們停下來，好好看看現在的彼此。',
-                quote: '「不用假裝我們一直都很好。因為我想知道真正的妳，也想知道真正的我們。」',
-                buttonText: '看看現在的我們 →',
-                startIndex: 23,
-                endIndex: 33
-            },
-            {
-                partTag: 'PART 07 · THE US WE WANT TO BECOME',
-                title: '❤️ 最重要的：我們想成為什麼樣的我們？',
-                introCard: '如果是我們，妳希望故事最後長什麼樣子？\n\n我們已經知道彼此怎麼理解愛，知道彼此需要什麼，知道彼此在哪些地方不一樣，也看見了現在的我們。\n\n所以最後，我想問妳：我們可以成為什麼樣子？\n\n不是要求妳保證永遠。也不是要妳現在就知道答案。\n只是如果可以選擇——妳希望我們一起走成什麼樣子？',
-                quote: '「我不只是想記得，我們曾經遇見彼此有多幸福。我更希望有一天回頭看，我們會發現原來我們真的有一起，把這段愛好好走下去。」',
-                buttonText: '寫下我們的以後 →',
-                startIndex: 34,
-                endIndex: 41
-            }
+        <div class="intro-box">
+            請複製下方的「專屬結果碼」，並將它傳給我。<br>
+            等我們都填完後，只要點擊首頁的「查看/比較兩人答案」，貼上我們兩個人的代碼就可以開始比對囉！
+        </div>
+
+        <p style="font-weight: bold; margin-bottom: 5px; color: var(--text-main);">妳的專屬結果碼：</p>
+        <div class="code-box" id="result-code-display">產生中...</div>
+
+        <button class="btn btn-milk" onclick="copyResultCode()">📋 複製結果碼</button>
+        <button class="btn btn-outline" style="margin-top: 12px;" onclick="showPage('page-home')">返回首頁</button>
+    </div>
+
+    <!-- 4. 輸入代碼比對頁面 -->
+    <div id="page-compare-input" class="hidden">
+        <h1>🔍 比對兩人答案</h1>
+        <p class="subtitle">請分別貼上「阿寶」與「小乖」的結果碼：</p>
+
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; font-size: 0.9em;">阿寶的結果碼：</label>
+            <textarea id="code-abao" rows="3" placeholder="貼上阿寶的結果碼..."></textarea>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: bold; font-size: 0.9em;">小乖的結果碼：</label>
+            <textarea id="code-xiaoguai" rows="3" placeholder="貼上小乖的結果碼..."></textarea>
+        </div>
+
+        <button class="btn btn-milk" onclick="processComparison()">開始比對</button>
+        <button class="btn btn-outline" style="margin-top: 12px;" onclick="showPage('page-home')">返回首頁</button>
+    </div>
+
+    <!-- 5. 比較結果顯示頁面 -->
+    <div id="page-compare-result" class="hidden">
+        <h1>📊 兩人答案對比結果</h1>
+        <div class="score-badge" id="match-score">0%</div>
+        <p class="subtitle" style="margin-top: -10px;">紅綠燈選擇一致性率</p>
+
+        <div id="comparison-list" style="max-height: 400px; overflow-y: auto; margin-bottom: 20px;"></div>
+
+        <button class="btn" onclick="showPage('page-home')">返回首頁</button>
+    </div>
+
+</div>
+
+<script>
+let currentUserRole = "";
+
+const rawQuestions = [
+    { id: 3, sec: "第二部分｜異性相處 ❤️‍🔥", text: "3. 跟異性單獨吃飯", type: "light" },
+    { id: 4, sec: "第二部分｜異性相處 ❤️‍🔥", text: "4. 跟異性單獨喝酒", type: "light" },
+    { id: 5, sec: "第二部分｜異性相處 ❤️‍🔥", text: "5. 跟異性單獨出去玩一整天", type: "light" },
+    { id: 6, sec: "第二部分｜異性相處 ❤️‍🔥", text: "6. 跟異性單獨看電影", type: "light" },
+    { id: 7, sec: "第二部分｜異性相處 ❤️‍🔥", text: "7. 搭異性的車", type: "light" },
+    { id: 8, sec: "第二部分｜異性相處 ❤️‍🔥", text: "8. 讓異性載自己回家", type: "light" },
+    { id: 9, sec: "第二部分｜異性相處 ❤️‍🔥", text: "9. 去異性朋友家", type: "light" },
+    { id: 10, sec: "第二部分｜異性相處 ❤️‍🔥", text: "10. 異性朋友來自己家", type: "light" },
+    { id: 11, sec: "第二部分｜異性相處 ❤️‍🔥", text: "11. 跟異性朋友聊天到半夜", type: "light" },
+    { id: 12, sec: "第二部分｜異性相處 ❤️‍🔥", text: "12. 每天跟固定的異性聊天", type: "light" },
+    { id: 13, sec: "第二部分｜異性相處 ❤️‍🔥", text: "13. 跟異性朋友講曖昧玩笑", type: "light" },
+    { id: 14, sec: "第二部分｜異性相處 ❤️‍🔥", text: "14. 跟異性朋友使用親密暱稱", type: "light" },
+    { id: 15, sec: "第二部分｜異性相處 ❤️‍🔥", text: "15. 跟異性朋友有肢體接觸", type: "light" },
+    { id: 16, sec: "第二部分｜異性相處 ❤️‍🔥", text: "16. 擁抱異性朋友", type: "light" },
+    { id: 17, sec: "第二部分｜異性相處 ❤️‍🔥", text: "17. 勾肩搭背", type: "light" },
+    { id: 18, sec: "第二部分｜異性相處 ❤️‍🔥", text: "18. 喝異性喝過的飲料", type: "light" },
+    { id: 19, sec: "第二部分｜異性相處 ❤️‍🔥", text: "19. 吃異性吃過的東西", type: "light" },
+    { id: 20, sec: "第二部分｜異性相處 ❤️‍🔥", text: "20. 喝異性喝過的酒", type: "light" },
+    { id: 21, sec: "第二部分｜異性相處 ❤️‍🔥", text: "21. 跟異性單獨過夜", type: "light" },
+    { id: 22, sec: "第二部分｜異性相處 ❤️‍🔥", text: "22. 跟一群異性朋友一起過夜", type: "light" },
+    { id: 23, sec: "第二部分｜異性相處 ❤️‍🔥", text: "23. 異性朋友在自己家過夜", type: "light" },
+    { id: 24, sec: "第二部分｜異性相處 ❤️‍🔥", text: "24. 旅行時跟異性朋友住同一間房", type: "light" },
+    { id: 25, sec: "第二部分｜異性相處 ❤️‍🔥", text: "25. 跟異性朋友一起旅行", type: "light" },
+
+    { id: 26, sec: "第三部分｜酒精與夜生活 🍻", text: "26. 跟朋友喝酒", type: "light" },
+    { id: 27, sec: "第三部分｜酒精與夜生活 🍻", text: "27. 跟一群異性朋友喝酒", type: "light" },
+    { id: 28, sec: "第三部分｜酒精與夜生活 🍻", text: "28. 喝到微醺", type: "light" },
+    { id: 29, sec: "第三部分｜酒精與夜生活 🍻", text: "29. 喝到醉", type: "light" },
+    { id: 30, sec: "第三部分｜酒精與夜生活 🍻", text: "30. 喝醉後由異性送回家", type: "light" },
+    { id: 31, sec: "第三部分｜酒精與夜生活 🍻", text: "31. 喝醉後去朋友家", type: "light" },
+    { id: 32, sec: "第三部分｜酒精與夜生活 🍻", text: "32. 去酒吧", type: "light" },
+    { id: 33, sec: "第三部分｜酒精與夜生活 🍻", text: "33. 去夜店", type: "light" },
+    { id: 34, sec: "第三部分｜酒精與夜生活 🍻", text: "34. 聚會到凌晨", type: "light" },
+    { id: 35, sec: "第三部分｜酒精與夜生活 🍻", text: "35. 臨時決定續攤", type: "light" },
+    { id: 36, sec: "第三部分｜酒精與夜生活 🍻", text: "36. 臨時改變原本回家的時間", type: "light" },
+    { id: 37, sec: "第三部分｜酒精與夜生活 🍻", text: "37. 原本說不喝酒，最後還是喝了", type: "light" },
+    { id: 38, sec: "第三部分｜酒精與夜生活 🍻", text: "38. 發生自己知道伴侶會介意的事情，但沒有主動告知", type: "light" },
+    { id: 39, sec: "第三部分｜酒精與夜生活 🍻", text: "39. 伴侶從別人口中才知道某件自己做過的事情", type: "light" },
+
+    { id: 40, sec: "第四部分｜報備與聯絡 📱", text: "40. 出門前告訴伴侶去哪裡", type: "light" },
+    { id: 41, sec: "第四部分｜報備與聯絡 📱", text: "41. 到目的地後告訴伴侶", type: "light" },
+    { id: 42, sec: "第四部分｜報備與聯絡 📱", text: "42. 臨時改行程時告訴伴侶", type: "light" },
+    { id: 43, sec: "第四部分｜報備與聯絡 📱", text: "43. 臨時跟別人一起走時告訴伴侶", type: "light" },
+    { id: 44, sec: "第四部分｜報備與聯絡 📱", text: "44. 忙到不能回訊息時先說一聲", type: "light" },
+    { id: 45, sec: "第四部分｜報備與聯絡 📱", text: "45. 已讀不回幾個小時", type: "light" },
+    { id: 46, sec: "第四部分｜報備與聯絡 📱", text: "46. 忙一整天沒有聯絡", type: "light" },
+    { id: 47, sec: "第四部分｜報備與聯絡 📱", text: "47. 睡覺前說晚安", type: "light" },
+    { id: 48, sec: "第四部分｜報備與聯絡 📱", text: "48. 起床後說早安", type: "light" },
+    { id: 49, sec: "第四部分｜報備與聯絡 📱", text: "49. 手機沒電前先告知", type: "light" },
+    { id: 50, sec: "第四部分｜報備與聯絡 📱", text: "50. 臨時消失幾個小時", type: "light" },
+    { id: 51, sec: "第四部分｜報備與聯絡 📱", text: "51. 約會途中突然很久不回訊息", type: "light" },
+    { id: 52, sec: "第四部分｜報備與聯絡 📱", text: "52. 跟朋友聊天時沒有注意到伴侶正在等自己", type: "light" },
+
+    { id: 53, sec: "第五部分｜手機與社群 📱", text: "53. 可以看彼此手機", type: "light" },
+    { id: 54, sec: "第五部分｜手機與社群 📱", text: "54. 知道彼此手機密碼", type: "light" },
+    { id: 55, sec: "第五部分｜手機與社群 📱", text: "55. 看對方與朋友的聊天紀錄", type: "light" },
+    { id: 56, sec: "第五部分｜手機與社群 📱", text: "56. 跟異性互動限時動態", type: "light" },
+    { id: 57, sec: "第五部分｜手機與社群 📱", text: "57. 幫異性朋友貼文按讚", type: "light" },
+    { id: 58, sec: "第五部分｜手機與社群 📱", text: "58. 私訊異性朋友", type: "light" },
+    { id: 59, sec: "第五部分｜手機與社群 📱", text: "59. 刪除跟異性的聊天紀錄", type: "light" },
+    { id: 60, sec: "第五部分｜手機與社群 📱", text: "60. 把某些聊天內容刻意隱藏", type: "light" },
+    { id: 61, sec: "第五部分｜手機與社群 📱", text: "61. 追蹤前任社群", type: "light" },
+    { id: 62, sec: "第五部分｜手機與社群 📱", text: "62. 看前任的限時動態", type: "light" },
+    { id: 63, sec: "第五部分｜手機與社群 📱", text: "63. 跟前任私訊", type: "light" },
+
+    { id: 64, sec: "第六部分｜前任 🫧", text: "64. 跟前任保持朋友關係", type: "light" },
+    { id: 65, sec: "第六部分｜前任 🫧", text: "65. 前任主動聯絡時回覆", type: "light" },
+    { id: 66, sec: "第六部分｜前任 🫧", text: "66. 前任生日傳訊息祝福", type: "light" },
+    { id: 67, sec: "第六部分｜前任 🫧", text: "67. 前任生病時關心", type: "light" },
+    { id: 68, sec: "第六部分｜前任 🫧", text: "68. 跟前任單獨吃飯", type: "light" },
+    { id: 69, sec: "第六部分｜前任 🫧", text: "69. 跟前任單獨見面", type: "light" },
+    { id: 70, sec: "第六部分｜前任 🫧", text: "70. 跟前任一起參加朋友聚會", type: "light" },
+    { id: 71, sec: "第六部分｜前任 🫧", text: "71. 保留前任送的禮物", type: "light" },
+    { id: 72, sec: "第六部分｜前任 🫧", text: "72. 保留前任的照片", type: "light" },
+    { id: 73, sec: "第六部分｜前任 🫧", text: "73. 不主動告訴伴侶前任曾經聯絡", type: "light" },
+
+    { id: 74, sec: "第七部分｜朋友與社交 👭", text: "74. 朋友臨時約出門，直接答應", type: "light" },
+    { id: 75, sec: "第七部分｜朋友與社交 👭", text: "75. 因為朋友取消原本的約會", type: "light" },
+    { id: 76, sec: "第七部分｜朋友與社交 👭", text: "76. 朋友需要幫忙時，即使伴侶不方便也去幫忙", type: "light" },
+    { id: 77, sec: "第七部分｜朋友與社交 👭", text: "77. 跟朋友抱怨伴侶", type: "light" },
+    { id: 78, sec: "第七部分｜朋友與社交 👭", text: "78. 跟朋友討論兩人的感情問題", type: "light" },
+    { id: 79, sec: "第七部分｜朋友與社交 👭", text: "79. 把伴侶的私事告訴朋友", type: "light" },
+    { id: 80, sec: "第七部分｜朋友與社交 👭", text: "80. 朋友對伴侶有負面意見", type: "light" },
+    { id: 81, sec: "第七部分｜朋友與社交 👭", text: "81. 朋友不喜歡伴侶", type: "light" },
+    { id: 82, sec: "第七部分｜朋友與社交 👭", text: "82. 伴侶不喜歡自己的某個朋友", type: "light" },
+    { id: 83, sec: "第七部分｜朋友與社交 👭", text: "83. 伴侶不在場時，朋友問兩人的私事", type: "light" },
+
+    { id: 84, sec: "第八部分｜「被放在心上」🥺", text: "84. 跟朋友聊天時，仍然記得伴侶正在等自己", type: "light" },
+    { id: 85, sec: "第八部分｜「被放在心上」🥺", text: "85. 約會時把手機放下來陪伴對方", type: "light" },
+    { id: 86, sec: "第八部分｜「被放在心上」🥺", text: "86. 臨時有事情時，主動告訴伴侶", type: "light" },
+    { id: 87, sec: "第八部分｜「被放在心上」🥺", text: "87. 伴侶遠道而來時，特別注意她的需求", type: "light" },
+    { id: 88, sec: "第八部分｜「被放在心上」🥺", text: "88. 伴侶一個人等待時，主動確認她在哪裡", type: "light" },
+    { id: 89, sec: "第八部分｜「被放在心上」🥺", text: "89. 看到伴侶不安時，主動安撫", type: "light" },
+    { id: 90, sec: "第八部分｜「被放在心上」🥺", text: "90. 知道某件事情是伴侶的敏感點後，做決定時稍微考慮一下", type: "light" },
+    { id: 91, sec: "第八部分｜「被放在心上」🥺", text: "91. 即使自己覺得「沒什麼」，仍願意理解伴侶為什麼難過", type: "light" },
+    { id: 92, sec: "第八部分｜「被放在心上」🥺", text: "92. 伴侶需要自己的時候，讓她知道「我沒有忘記妳」", type: "light" },
+
+    { id: 93, sec: "第九部分｜吵架與衝突 🌧️", text: "93. 生氣時暫時不回訊息", type: "light" },
+    { id: 94, sec: "第九部分｜吵架與衝突 🌧️", text: "94. 需要冷靜幾個小時", type: "light" },
+    { id: 95, sec: "第九部分｜吵架與衝突 🌧️", text: "95. 吵架時暫時掛電話", type: "light" },
+    { id: 96, sec: "第九部分｜吵架與衝突 🌧️", text: "96. 說「我現在不想談」", type: "light" },
+    { id: 97, sec: "第九部分｜吵架與衝突 🌧️", text: "97. 雙方冷靜後再重新談", type: "light" },
+    { id: 98, sec: "第九部分｜吵架與衝突 🌧️", text: "98. 吵架時提到以前發生過的事情", type: "light" },
+    { id: 99, sec: "第九部分｜吵架與衝突 🌧️", text: "99. 吵架時說「算了」", type: "light" },
+    { id: 100, sec: "第九部分｜吵架與衝突 🌧️", text: "100. 吵架時說「分手」", type: "light" },
+    { id: 101, sec: "第九部分｜吵架與衝突 🌧️", text: "101. 一方哭的時候，另一方先安撫而不是講道理", type: "light" },
+    { id: 102, sec: "第九部分｜吵架與衝突 🌧️", text: "102. 同一件事情重複發生時重新討論", type: "light" },
+    { id: 103, sec: "第九部分｜吵架與衝突 🌧️", text: "103. 道歉後需要實際行動證明", type: "light" },
+    { id: 104, sec: "第九部分｜吵架與衝突 🌧️", text: "104. 其中一個人受傷時，另一個人需要主動修復", type: "light" },
+
+    { id: 105, sec: "第十部分｜自由與安全感 🌱", text: "105. 自己想做的事情，不需要全部告訴伴侶", type: "light" },
+    { id: 106, sec: "第十部分｜自由與安全感 🌱", text: "106. 可以有自己的朋友圈", type: "light" },
+    { id: 107, sec: "第十部分｜自由與安全感 🌱", text: "107. 可以有自己的私人時間", type: "light" },
+    { id: 108, sec: "第十部分｜自由與安全感 🌱", text: "108. 可以一個人出去玩", type: "light" },
+    { id: 109, sec: "第十部分｜自由與安全感 🌱", text: "109. 可以不即時回訊息", type: "light" },
+    { id: 110, sec: "第十部分｜自由與安全感 🌱", text: "110. 可以有不跟伴侶分享的私人空間", type: "light" },
+    { id: 111, sec: "第十部分｜自由與安全感 🌱", text: "111. 可以跟伴侶有不同的價值觀", type: "light" },
+    { id: 112, sec: "第十部分｜自由與安全感 🌱", text: "112. 可以做伴侶不喜歡但自己認為合理的事情", type: "light" },
+    { id: 113, sec: "第十部分｜自由與安全感 🌱", text: "113. 伴侶不舒服時，自己仍然保有做選擇的權利", type: "light" },
+
+    { id: 114, sec: "第十一部分｜未來 💍", text: "114. 我希望這段感情長久", type: "light" },
+    { id: 115, sec: "第十一部分｜未來 💍", text: "115. 我把結婚視為可能的未來", type: "light" },
+    { id: 116, sec: "第十一部分｜未來 💍", text: "116. 即使遇到很大的問題，也希望先努力修復", type: "light" },
+    { id: 117, sec: "第十一部分｜未來 💍", text: "117. 遇到問題時，我希望兩個人一起想辦法", type: "light" },
+    { id: 118, sec: "第十一部分｜未來 💍", text: "118. 我希望伴侶把「我們的未來」放進人生規劃", type: "light" },
+    { id: 119, sec: "第十一部分｜未來 💍", text: "119. 我願意為這段關係做出一些改變", type: "light" },
+    { id: 120, sec: "第十一部分｜未來 💍", text: "120. 我希望對方也願意為這段關係做出一些改變", type: "light" },
+
+    { id: 121, sec: "⭐ 最後一部分｜真正重要的問答題", text: "121. 「什麼行為最容易讓你失去安全感？」", type: "text" },
+    { id: 122, sec: "⭐ 最後一部分｜真正重要的問答題", text: "122. 「什麼行為最能讓你感覺自己被愛？」", type: "text" },
+    { id: 123, sec: "⭐ 最後一部分｜真正重要的問答題", text: "123. 「你最害怕伴侶怎麼對你？」", type: "text" },
+    { id: 124, sec: "⭐ 最後一部分｜真正重要的問答題", text: "124. 「你最希望伴侶理解你的哪一個部分？」", type: "text" },
+    { id: 125, sec: "⭐ 最後一部分｜真正重要的問答題", text: "125. 「你覺得自己在這段關係裡最需要改變的是什麼？」", type: "text" },
+    { id: 126, sec: "⭐ 最後一部分｜真正重要的問答題", text: "126. 「你覺得伴侶最需要改變的是什麼？」", type: "text" },
+    { id: 127, sec: "⭐ 最後一部分｜真正重要的問答題", text: "127. 「什麼事情即使伴侶不喜歡，你仍然希望保有自由？」", type: "text" },
+    { id: 128, sec: "⭐ 最後一部分｜真正重要的問答題", text: "128. 「什麼事情即使自己不在意，也願意為了伴侶稍微調整？」", type: "text" },
+    { id: 129, sec: "⭐ 最後一部分｜真正重要的問答題", text: "129. 「如果我們兩個的界線不同，你希望我們怎麼找到答案？」", type: "text" },
+    { id: 130, sec: "⭐ 最後一部分｜真正重要的問答題", text: "130. 「你希望我們最後變成什麼樣的情侶？」", type: "text" },
+    { id: 131, sec: "❤️ 最後的衷心期許", text: "131. 完成這份問卷後，我最希望我們一起做到的是：", type: "text" }
+];
+
+const standardLightOptions = [
+    { label: "🟢 綠燈｜完全可以接受", val: "綠燈" },
+    { label: "🟡 黃燈｜可以，但希望有一些界線／提前告知", val: "黃燈" },
+    { label: "🔴 紅燈｜我很難接受", val: "紅燈" },
+    { label: "❓ 不確定｜需要討論", val: "不確定" }
+];
+
+function getOptionsForQuestion(qId) {
+    if (qId >= 40 && qId <= 49) {
+        return [
+            { label: "🟢 綠燈｜不說也沒關係，但可以分享", val: "綠燈" },
+            { label: "🟡 黃燈｜事前不一定要說，事後要講", val: "黃燈" },
+            { label: "🔴 紅燈｜一定要講，並且提前", val: "紅燈" },
+            { label: "❓ 不確定｜需要討論", val: "不確定" }
         ];
-
-        const QUESTIONS = [
-            { id: 1, part: 'PART 1', type: 'single', title: '1. 你認為一段感情需要經營嗎？', options: [
-                { code: 'A', label: '共同經營型', detail: '一段感情需要兩個人共同經營。愛是基礎，但還需要透過溝通、陪伴、體諒、調整和行動，才能讓關係長久。' },
-                { code: 'B', label: '自然相處型', detail: '只要兩個人真心相愛、相處舒服，感情就可以自然維持，不需要刻意做很多事情。' },
-                { code: 'C', label: '平衡型', detail: '平常可以自然相處，不需要一直刻意經營，但當發現彼此有需求或關係出現問題時，就應該主動花心力處理。' },
-                { code: 'D', label: '其他／我自己的想法', detail: '' }
-            ]},
-            { id: 2, part: 'PART 1', type: 'single', title: '2. 你覺得「愛一個人」比較接近哪一種？', options: [
-                { code: 'A', label: '心裡愛著就很重要', detail: '只要我是真心愛對方，即使我的表達方式不同，也不代表我不愛她。' },
-                { code: 'B', label: '愛需要被行動證明', detail: '我認為愛不能只存在心裡，也需要透過行動、陪伴、關心與調整讓對方感受到。' },
-                { code: 'C', label: '兩者都重要', detail: '心裡有愛是基礎，但也需要學習用對方能感受到的方式表達。' }
-            ]},
-            { id: 3, part: 'PART 1', type: 'text', title: '3. 妳覺得，自己怎麼樣是在愛一個人？' },
-            { id: 4, part: 'PART 1', type: 'single', title: '4. 如果伴侶說「我感受不到妳的在乎」，你比較傾向？', options: [
-                { code: 'A', label: '嘗試調整', detail: '我會先想自己是不是哪裡做得不夠，再嘗試調整。' },
-                { code: 'B', label: '說明想法', detail: '我會先告訴她我的想法，讓她知道我其實有在乎，只是表達方式不同。' },
-                { code: 'C', label: '共同討論', detail: '我希望兩個人一起討論，找出「她需要什麼」以及「我做得到什麼」。' },
-                { code: 'D', label: '不需要一直證明', detail: '我會覺得如果我已經很愛她，就不應該一直需要證明。' }
-            ]},
-            { id: 5, part: 'PART 2', type: 'single', title: '5. 你覺得伴侶需要主動發現你的需求嗎？', options: [
-                { code: 'A', label: '需要', detail: '如果真的在乎一個人，我希望她可以慢慢了解我，不需要每件事情都等我說。' },
-                { code: 'B', label: '不需要', detail: '每個人的想法都不同，我不希望伴侶猜我的心，我會直接告訴她。' },
-                { code: 'C', label: '兩者都有', detail: '重要的事情我會說，但平常的一些小事，我也希望伴侶可以慢慢觀察、記住。' }
-            ]},
-            { id: 6, part: 'PART 2', type: 'single', title: '6. 如果妳覺得「這件事情沒什麼」，但伴侶很在意？', options: [
-                { code: 'A', label: '我會願意調整', detail: '只要不是違反我的原則，我會因為在乎她而調整。' },
-                { code: 'B', label: '我會理解，但不一定改', detail: '我可以理解她為什麼不舒服，但不代表我認為自己一定需要改變。' },
-                { code: 'C', label: '我們一起找中間點', detail: '我會先理解她，再說明我的想法，最後找一個兩個人都能接受的方式。' }
-            ]},
-            { id: 7, part: 'PART 2', type: 'single', title: '7. 你認為為伴侶改變自己的某些習慣，是？', options: [
-                { code: 'A', label: '愛的一部分', detail: '為了讓關係更好而做適度改變，是很正常的事情。' },
-                { code: 'B', label: '可以，但不能變成義務', detail: '我願意為她改，但不希望變成「愛我就應該改」。' },
-                { code: 'C', label: '要看改變的程度', detail: '小事情可以調整，但涉及自己的價值觀、自由或生活方式，就需要仔細討論。' }
-            ]},
-            { id: 8, part: 'PART 3', type: 'single', title: '8. 你談戀愛時，會不會自然想到未來？', options: [
-                { code: 'A', label: '會', detail: '我會自然開始想像我們未來可能一起生活、旅行、成家或經歷什麼。' },
-                { code: 'B', label: '比較不會', detail: '我比較習慣珍惜現在，不太會預設未來一定會怎麼樣。' },
-                { code: 'C', label: '會想，但不會預設結果', detail: '我會期待未來，也願意一起規劃，但不會要求現在就保證最後一定會怎樣。' }
-            ]},
-            { id: 9, part: 'PART 3', type: 'single', title: '9. 「能遇見彼此就是很幸福的事情」比較接近你的想法？', options: [
-                { code: 'A', label: '相遇本身就是很大的幸福', detail: '即使最後沒有走到最後，只要曾經真心愛過，這段關係就已經很珍貴。' },
-                { code: 'B', label: '相遇是開始，不是終點', detail: '相遇很美好，但我更在意相遇之後我們怎麼一起生活、怎麼繼續走下去。' },
-                { code: 'C', label: '兩者都重要', detail: '我珍惜我們相遇，也希望一起走向未來，但不會因為未來不確定而否定現在。' }
-            ]},
-            { id: 10, part: 'PART 3', type: 'single', title: '10. 如果很愛一個人，但不知道最後會不會永遠在一起，你會？', options: [
-                { code: 'A', label: '全心投入', detail: '既然現在愛著，就會認真愛、認真經營，不會因為害怕最後分開而保留。' },
-                { code: 'B', label: '投入，但保留自己', detail: '我會很認真愛，但也會保留自己的生活與心理空間，因為未來沒有人能保證。' },
-                { code: 'C', label: '不特別想結果', detail: '我不太會想最後會不會永遠，只想把現在過好。' }
-            ]},
-            { id: 11, part: 'PART 4', type: 'text', title: '11. 妳覺得，另一半怎麼樣做，會讓妳感受到「她愛妳」？' },
-            { id: 12, part: 'PART 4', type: 'multi', max: 3, title: '12. 你最希望另一半讓你感受到什麼？（請選 3 個）', options: [
-                '被理解', '被尊重', '被信任', '被重視', '被照顧', '被陪伴', '被支持', '被需要', '被肯定', '被放在心上', '有安全感', '有自由', '有新鮮感', '有未來感'
-            ]},
-            { id: 13, part: 'PART 4', type: 'single', title: '13. 你理想中的伴侶，比較接近哪一種？', options: [
-                { code: 'A', label: '很有陪伴感的人', detail: '會主動找我、想和我分享生活，也會希望有很多相處時間。' },
-                { code: 'B', label: '獨立型伴侶', detail: '彼此深愛，但各自都有自己的生活，不需要一直黏在一起。' },
-                { code: 'C', label: '平衡型', detail: '有自己的生活，但也會主動維持兩個人的連結，讓彼此知道自己很重要。' }
-            ]},
-            { id: 14, part: 'PART 4', type: 'single', title: '14. 你希望另一半在生活中「主動」到什麼程度？', options: [
-                { code: 'A', label: '很主動', detail: '希望她主動聯絡、安排約會、關心我、記得重要的事情，不要什麼都等我開口。' },
-                { code: 'B', label: '適度主動', detail: '重要的事情希望她主動，小事情不用要求太多。' },
-                { code: 'C', label: '我比較不需要主動性', detail: '只要她在我需要的時候陪著我就好，平常不用特別安排。' }
-            ]},
-            { id: 15, part: 'PART 4', type: 'single', title: '15. 如果你遇到不開心的事情，你希望另一半怎麼做？', options: [
-                { code: 'A', label: '主動察覺', detail: '希望她可以看出我不對勁，主動問我。' },
-                { code: 'B', label: '等我說', detail: '我比較希望自己整理好之後，再告訴她。' },
-                { code: 'C', label: '主動但不要逼我', detail: '可以問我、讓我知道她在，但不要一直追問。' }
-            ]},
-            { id: 16, part: 'PART 4', type: 'single', title: '16. 你希望另一半記住你曾經說過、在意過的事情嗎？', options: [
-                { code: 'A', label: '很重要', detail: '我會覺得對方記得這些事情，就是把我放在心上的表現。' },
-                { code: 'B', label: '重要事情記得就好', detail: '不需要每件小事都記得，但真正重要的事情希望她記得。' },
-                { code: 'C', label: '我不太在意', detail: '我比較重視當下怎麼相處，不會因為對方忘記以前說過的事情就覺得她不在乎。' }
-            ]},
-            { id: 17, part: 'PART 4', type: 'single', title: '17. 如果你知道一件事情會讓伴侶很難過，你希望自己怎麼做？', options: [
-                { code: 'A', label: '我會盡量避免', detail: '即使我覺得那件事情本身沒有問題，只要對她很重要，我會願意考慮。' },
-                { code: 'B', label: '理解她，但我仍然會自己決定', detail: '我會在意她的感受，但最後仍然會依照自己的價值觀做選擇。' },
-                { code: 'C', label: '一起討論', detail: '我希望兩個人先說清楚，再決定怎麼做。' }
-            ]},
-            { id: 18, part: 'PART 4', type: 'multi', max: 5, title: '18. 你覺得理想的伴侶應該具備什麼特質？（請選 5 個最重要的）', options: [
-                '溫柔', '理解我', '有責任感', '願意溝通', '願意改變', '尊重我的自由', '給我安全感', '有自己的生活', '願意陪伴', '主動', '誠實', '穩定', '有耐心', '有未來規劃', '願意一起解決問題', '情緒穩定', '能接住我的情緒', '願意表達愛', '願意為關係努力', '有自己的目標'
-            ]},
-            { id: 19, part: 'PART 4', type: 'text', title: '19. 「我希望另一半為我做什麼，但我平常可能不太會說出口？」' },
-            { id: 20, part: 'PART 5', type: 'single', title: '20. 當伴侶問你「妳為什麼會這樣想？」時，你通常？', options: [
-                { code: 'A', label: '腦中其實有想法，但不知道怎麼講。', detail: '' },
-                { code: 'B', label: '當下真的不知道自己為什麼會這樣想。', detail: '' },
-                { code: 'C', label: '知道，但怕說出來會讓對方更生氣，所以不太敢說。', detail: '' },
-                { code: 'D', label: '我需要一點時間整理，之後才比較能說。', detail: '' },
-                { code: 'E', label: '我比較習慣用行動表達，不太會用語言解釋。', detail: '' },
-                { code: 'F', label: '其他', detail: '' }
-            ]},
-            { id: 21, part: 'PART 5', type: 'single', title: '21. 當我們吵架時，你最希望伴侶怎麼跟你溝通？', options: [
-                { code: 'A', label: '直接把問題講清楚，我比較不喜歡拖。', detail: '' },
-                { code: 'B', label: '先讓我冷靜，再慢慢談。', detail: '' },
-                { code: 'C', label: '先安撫我的情緒，再討論事情。', detail: '' },
-                { code: 'D', label: '不要一次講太多事情，一次處理一件。', detail: '' },
-                { code: 'E', label: '我需要對方問我問題，幫助我整理自己的想法。', detail: '' },
-                { code: 'F', label: '其他', detail: '' }
-            ]},
-            { id: 22, part: 'PART 5', type: 'single', title: '22. 如果你不知道自己真正的想法，你希望伴侶？', options: [
-                { code: 'A', label: '給我時間，我自己慢慢想。', detail: '' },
-                { code: 'B', label: '問我幾個具體問題，幫助我想。', detail: '' },
-                { code: 'C', label: '先告訴我她自己的想法，讓我比較知道怎麼回應。', detail: '' },
-                { code: 'D', label: '先不要逼我回答，等我準備好再說。', detail: '' }
-            ]},
-            { id: 23, part: 'PART 5', type: 'single', title: '23. 當伴侶講了很多自己的感受後，你最容易出現哪種狀態？', options: [
-                { code: 'A', label: '我會開始覺得自己好像做什麼都不對。', detail: '' },
-                { code: 'B', label: '我其實有在聽，但不知道怎麼回應。', detail: '' },
-                { code: 'C', label: '我會想趕快解決問題，所以可能直接給答案。', detail: '' },
-                { code: 'D', label: '我會覺得壓力很大，需要先消化。', detail: '' },
-                { code: 'E', label: '我會慢慢理解，但需要一些時間。', detail: '' },
-                { code: 'F', label: '其實我沒有特別感覺。', detail: '' }
-            ]},
-            { id: 24, part: 'PART 6', type: 'single', title: '24. 最近的你，對我們的感情感覺比較接近？', options: [
-                { code: 'A', label: '很幸福、很安心', detail: '' },
-                { code: 'B', label: '幸福，但偶爾會有一些疲累', detail: '' },
-                { code: 'C', label: '有幸福，也有不少壓力', detail: '' },
-                { code: 'D', label: '最近比較常感到疲累或難過', detail: '' },
-                { code: 'E', label: '我其實有點不知道自己現在是什麼感覺', detail: '' }
-            ]},
-            { id: 25, part: 'PART 6', type: 'single', title: '25. 最近你有覺得「談戀愛很累」嗎？', options: [
-                { code: 'A', label: '沒有，我覺得我們目前很好。', detail: '' },
-                { code: 'B', label: '偶爾有，但主要是生活或其他事情造成的。', detail: '' },
-                { code: 'C', label: '有一些累，主要來自我們反覆討論同樣的問題。', detail: '' },
-                { code: 'D', label: '滿累的，我有時候會覺得不知道怎麼做才是對的。', detail: '' },
-                { code: 'E', label: '很累，我甚至有時候會想逃避這些問題。', detail: '' }
-            ]},
-            { id: 26, part: 'PART 6', type: 'single', title: '26. 最近你覺得自己在這段感情里的狀態是？', options: [
-                { code: 'A', label: '我覺得自己有好好付出。', detail: '' },
-                { code: 'B', label: '我覺得自己有付出，但可能沒有用對方感受到的方式。', detail: '' },
-                { code: 'C', label: '我覺得自己最近其實有點沒有餘力經營。', detail: '' },
-                { code: 'D', label: '我覺得自己已經努力很多，但不知道還能怎麼做。', detail: '' },
-                { code: 'E', label: '我其實沒有特別想過這件事情。', detail: '' }
-            ]},
-            { id: 27, part: 'PART 6', type: 'single', title: '27. 最近你覺得伴侶在這段關係里的狀態是？', options: [
-                { code: 'A', label: '我覺得她已經很努力了。', detail: '' },
-                { code: 'B', label: '我覺得她很努力，但有些地方我們需要再磨合。', detail: '' },
-                { code: 'C', label: '我覺得她好像有點累了。', detail: '' },
-                { code: 'D', label: '我覺得她可能有一些需求沒有被我理解。', detail: '' },
-                { code: 'E', label: '我其實不太確定她現在怎麼想。', detail: '' }
-            ]},
-            { id: 28, part: 'PART 6', type: 'multi', max: 3, title: '28. 最近你覺得我們最需要解決的是什麼？（最多選 3 個）', options: [
-                '信任', '安全感', '邊界', '溝通方式', '聯絡頻率', '陪伴', '彼此的自由', '異性朋友相處', '前任問題', '報備問題', '情緒處理', '彼此理解', '付出的平衡', '經營感情的方式', '對未來的想法', '爭吵方式'
-            ]},
-            { id: 29, part: 'PART 6', type: 'text', title: '29. 如果現在只能改變我們之間「一件事情」，你最希望是什麼？' },
-            { id: 30, part: 'PART 6', type: 'text', title: '30. 最近有沒有一件事情，是你其實一直放在心裡，但還沒有好好告訴對方的？' },
-            { id: 31, part: 'PART 6', type: 'text', title: '31. 最近有沒有哪個瞬間，你覺得「我好愛她」？' },
-            { id: 32, part: 'PART 6', type: 'text', title: '32. 最近有沒有哪個瞬間，你覺得「我好累」？' },
-            { id: 33, part: 'PART 6', type: 'text', title: '33. 最近有沒有哪個瞬間，你覺得「她好像沒有把我放在心上」？' },
-            { id: 34, part: 'PART 6', type: 'text', title: '34. 最近有沒有哪個瞬間，你覺得「原來她真的很在乎我」？' },
-            { id: 35, part: 'PART 7', type: 'single', title: '35. 如果一年後回頭看現在，你希望我們變成什麼樣子？', options: [
-                { code: 'A', label: '更穩定', detail: '少一點爭吵，多一點安心。' },
-                { code: 'B', label: '更親密', detail: '更了解彼此，也更能分享自己的內心。' },
-                { code: 'C', label: '更自由', detail: '彼此信任，不需要因為戀愛而失去自己的生活。' },
-                { code: 'D', label: '更有未來感', detail: '開始一起規劃生活、旅行、工作、居住甚至更長遠的事情。' },
-                { code: 'E', label: '更會溝通', detail: '即使有不同，也可以好好說，而不是互相受傷。' },
-                { code: 'F', label: '以上都希望。', detail: '' },
-                { code: 'G', label: '其他', detail: '' }
-            ]},
-            { id: 36, part: 'PART 7', type: 'text', title: '36. 你希望我們的感情最後給你的感覺是？' },
-            { id: 37, part: 'PART 7', type: 'text', title: '37. 你願意為了讓我們變成你理想中的樣子，做出什麼改變？' },
-            { id: 38, part: 'PART 7', type: 'text', title: '38. 你希望我為了我們做什麼？' },
-            { id: 39, part: 'PART 7', type: 'text', title: '39. 而你願意為了我們做什麼？' },
-            { id: 40, part: 'PART 7', type: 'text', title: '40. 有沒有什麼事情，是你希望我理解，但你一直不知道怎麼跟我說？' },
-            { id: 41, part: 'PART 7', type: 'text', title: '41. 如果要用一句話告訴我：「我希望妳更懂我的地方是＿＿＿＿。」' },
-            { id: 42, part: 'PART 7', type: 'text', title: '42. 最後，如果不用擔心對方生氣、失望或難過，你最想對她說的一句話是什麼？' }
+    } else if (qId >= 53 && qId <= 55) {
+        return [
+            { label: "🟢 綠燈｜一定要隨時可以", val: "綠燈" },
+            { label: "🟡 黃燈｜平常不用知道，但有需要一定要可以", val: "黃燈" },
+            { label: "🔴 紅燈｜完全不行", val: "紅燈" },
+            { label: "❓ 不確定｜需要討論", val: "不確定" }
         ];
+    } else if ((qId >= 84 && qId <= 92) || (qId >= 96 && qId <= 104)) {
+        return [
+            { label: "🟢 綠燈｜完全沒差", val: "綠燈" },
+            { label: "🟡 黃燈｜偶爾沒關係，但有/沒有比較好", val: "黃燈" },
+            { label: "🔴 紅燈｜非常重要、完全可以/不行", val: "紅燈" },
+            { label: "❓ 不確定｜需要討論", val: "不確定" }
+        ];
+    } else if (qId >= 93 && qId <= 95) {
+        return [
+            { label: "🟢 綠燈｜完全沒差", val: "綠燈" },
+            { label: "🟡 黃燈｜偶爾沒關係，但要說一下", val: "黃燈" },
+            { label: "🔴 紅燈｜完全不行", val: "紅燈" },
+            { label: "❓ 不確定｜需要討論", val: "不確定" }
+        ];
+    } else if (qId >= 114 && qId <= 120) {
+        return [
+            { label: "🟢 綠燈｜非常同意", val: "綠燈" },
+            { label: "🟡 黃燈｜沒有特別的想法，沒有也沒關係", val: "黃燈" },
+            { label: "🔴 紅燈｜不同意", val: "紅燈" },
+            { label: "❓ 不確定｜需要討論", val: "不確定" }
+        ];
+    }
+    return standardLightOptions;
+}
 
-        function selectUser(user) {
-            currentUser = user;
-            const buttons = document.querySelectorAll('.user-btn');
-            buttons.forEach(btn => {
-                if (btn.innerText === user) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-        }
+let currentIndex = 0;
+let userAnswers = {};
 
-        function startQuestionnaire() {
-            document.getElementById('home-screen').classList.add('hidden');
-            currentQuestionIndex = 0;
-            checkAndShowSectionIntro();
-        }
+window.onload = function() {
+    const savedRole = localStorage.getItem("relationship_quiz_role");
+    if (savedRole) {
+        selectRole(savedRole);
+    }
+    const saved = localStorage.getItem("relationship_quiz_answers");
+    if (saved) {
+        try { userAnswers = JSON.parse(saved); } catch(e){}
+    }
+};
 
-        function checkAndShowSectionIntro() {
-            const section = SECTIONS.find(s => s.startIndex === currentQuestionIndex);
-            if (section) {
-                currentSectionIndex = SECTIONS.indexOf(section);
-                showSectionIntro(section);
-            } else {
-                showQuestionScreen();
-            }
-        }
+function selectRole(role) {
+    currentUserRole = role;
+    localStorage.setItem("relationship_quiz_role", role);
+    document.getElementById('role-abao').classList.remove('selected');
+    document.getElementById('role-xiaoguai').classList.remove('selected');
+    if (role === '阿寶') {
+        document.getElementById('role-abao').classList.add('selected');
+    } else {
+        document.getElementById('role-xiaoguai').classList.add('selected');
+    }
+}
 
-        function showSectionIntro(section) {
-            document.getElementById('question-screen').classList.add('hidden');
-            document.getElementById('section-screen').classList.remove('hidden');
+function showPage(pageId) {
+    document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
+    document.getElementById(pageId).classList.remove('hidden');
+}
 
-            document.getElementById('section-part-tag').innerText = section.partTag;
-            document.getElementById('section-title').innerText = section.title;
-            document.getElementById('section-intro-text').innerText = section.introCard;
-            document.getElementById('section-quote').innerText = section.quote;
-            document.getElementById('section-next-btn').innerText = section.buttonText;
-        }
+function startQuiz() {
+    if (!currentUserRole) {
+        alert("請先點選妳/ your 的身分（阿寶 或 小乖）喔！");
+        return;
+    }
+    showPage('page-quiz');
+    renderQuestion();
+}
 
-        function enterQuestionsOfSection() {
-            document.getElementById('section-screen').classList.add('hidden');
-            showQuestionScreen();
-        }
+function renderQuestion() {
+    const q = rawQuestions[currentIndex];
+    
+    const progress = Math.round(((currentIndex + 1) / rawQuestions.length) * 100);
+    document.getElementById('progress-bar').style.width = progress + '%';
+    document.getElementById('progress-text').innerText = `${currentIndex + 1} / ${rawQuestions.length}`;
 
-        function showQuestionScreen() {
-            document.getElementById('question-screen').classList.remove('hidden');
+    document.getElementById('section-tag').innerText = q.sec;
+    document.getElementById('question-title').innerText = q.text;
 
-            const q = QUESTIONS[currentQuestionIndex];
-            const total = QUESTIONS.length;
-            const progressPercent = ((currentQuestionIndex + 1) / total) * 100;
-            document.getElementById('progress-bar').style.width = progressPercent + '%';
-            document.getElementById('progress-text').innerText = `${currentQuestionIndex + 1} / ${total}`;
+    const optContainer = document.getElementById('options-container');
+    const noteContainer = document.getElementById('note-container');
+    const noteInput = document.getElementById('note-input');
+    
+    optContainer.innerHTML = '';
+    noteContainer.classList.add('hidden');
+    noteInput.value = '';
 
-            document.getElementById('q-part-tag').innerText = q.part;
-            document.getElementById('q-title').innerText = q.title;
+    const currentAns = userAnswers[q.id] || {};
 
-            const optionsContainer = document.getElementById('options-container');
-            const textContainer = document.getElementById('text-container');
-            const hintElem = document.getElementById('q-hint');
-
-            optionsContainer.innerHTML = '';
-            optionsContainer.classList.add('hidden');
-            textContainer.classList.add('hidden');
-            hintElem.classList.add('hidden');
-
-            if (q.type === 'single') {
-                optionsContainer.classList.remove('hidden');
-                q.options.forEach(opt => {
-                    const item = document.createElement('div');
-                    item.className = 'option-item';
-                    if (answers[q.id] === opt.code || answers[q.id] === opt.label) {
-                        item.classList.add('selected');
-                    }
-
-                    const badge = opt.code ? `<div class="option-badge">${opt.code}</div>` : `<div class="option-badge">•</div>`;
-                    const detailText = opt.detail ? `<span>${opt.detail}</span>` : '';
-                    
-                    item.innerHTML = `
-                        ${badge}
-                        <div class="option-content">
-                            <strong>${opt.label}</strong>
-                            ${detailText}
-                        </div>
-                    `;
-
-                    item.onclick = () => {
-                        answers[q.id] = opt.code || opt.label;
-                        showQuestionScreen();
-                    };
-                    optionsContainer.appendChild(item);
-                });
-            } else if (q.type === 'multi') {
-                optionsContainer.classList.remove('hidden');
-                hintElem.classList.remove('hidden');
-                
-                let selectedList = answers[q.id] || [];
-                hintElem.innerText = `目前已選擇 ${selectedList.length} / ${q.max} 項`;
-
-                q.options.forEach(optText => {
-                    const item = document.createElement('div');
-                    item.className = 'option-item';
-                    const isSelected = selectedList.includes(optText);
-                    if (isSelected) {
-                        item.classList.add('selected');
-                    }
-
-                    item.innerHTML = `
-                        <div class="option-badge">${isSelected ? '✓' : ''}</div>
-                        <div class="option-content">
-                            <strong>${optText}</strong>
-                        </div>
-                    `;
-
-                    item.onclick = () => {
-                        let curArr = answers[q.id] || [];
-                        if (curArr.includes(optText)) {
-                            curArr = curArr.filter(x => x !== optText);
-                        } else {
-                            if (curArr.length < q.max) {
-                                curArr.push(optText);
-                            } else {
-                                alert(`最多只能選擇 ${q.max} 個項目喔！`);
-                            }
-                        }
-                        answers[q.id] = curArr;
-                        showQuestionScreen();
-                    };
-                    optionsContainer.appendChild(item);
-                });
-            } else if (q.type === 'text') {
-                textContainer.classList.remove('hidden');
-                const area = document.getElementById('open-textarea');
-                area.value = answers[q.id] || '';
-                area.oninput = (e) => {
-                    answers[q.id] = e.target.value;
-                };
-            }
-
-            document.getElementById('prev-btn').style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
-        }
-
-        function fillQuickHelper() {
-            const area = document.getElementById('open-textarea');
-            area.value = "我需要想一下";
-            answers[QUESTIONS[currentQuestionIndex].id] = "我需要想一下";
-        }
-
-        function prevQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                checkAndShowSectionIntro();
-            }
-        }
-
-        function nextQuestion() {
-            if (currentQuestionIndex < QUESTIONS.length - 1) {
-                currentQuestionIndex++;
-                checkAndShowSectionIntro();
-            } else {
-                finishQuestionnaire();
-            }
-        }
-
-        function finishQuestionnaire() {
-            document.getElementById('question-screen').classList.add('hidden');
-            document.getElementById('ending-screen').classList.remove('hidden');
-
-            const payload = {
-                user: currentUser,
-                timestamp: new Date().toISOString(),
-                ans: answers
+    if (q.type === 'light') {
+        const optionsToUse = getOptionsForQuestion(q.id);
+        optionsToUse.forEach(opt => {
+            const btn = document.createElement('div');
+            btn.className = `option-btn ${currentAns.ans === opt.val ? 'selected' : ''}`;
+            btn.innerText = opt.label;
+            btn.onclick = (e) => {
+                e.preventDefault();
+                selectOption(q.id, opt.val);
             };
+            optContainer.appendChild(btn);
+        });
 
-            try {
-                const jsonStr = JSON.stringify(payload);
-                const base64Code = btoa(encodeURIComponent(jsonStr));
-                document.getElementById('share-code-box').innerText = base64Code;
-            } catch (e) {
-                document.getElementById('share-code-box').innerText = "生成代碼失敗，請確認回答內容";
+        if (currentAns.ans) {
+            noteContainer.classList.remove('hidden');
+            noteInput.value = currentAns.note || '';
+        }
+
+        noteInput.oninput = (e) => {
+            if (!userAnswers[q.id]) userAnswers[q.id] = {};
+            userAnswers[q.id].note = e.target.value;
+            saveLocally();
+        };
+
+    } else if (q.type === 'text') {
+        const txt = document.createElement('textarea');
+        txt.rows = 4;
+        txt.placeholder = "請寫下妳最真實的想法...";
+        txt.value = currentAns.ans || '';
+        txt.oninput = (e) => {
+            userAnswers[q.id] = { ans: e.target.value };
+            saveLocally();
+        };
+        optContainer.appendChild(txt);
+    }
+
+    document.getElementById('btn-prev').style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+    document.getElementById('btn-next').innerText = currentIndex === rawQuestions.length - 1 ? '完成並提交' : '下一題';
+}
+
+function selectOption(qId, val) {
+    if (!userAnswers[qId]) userAnswers[qId] = {};
+    userAnswers[qId].ans = val;
+    saveLocally();
+    
+    const buttons = document.querySelectorAll('#options-container .option-btn');
+    buttons.forEach(btn => {
+        if (btn.innerText.includes(val) || btn.innerText === val) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+
+    if (rawQuestions[currentIndex].type === 'light') {
+        document.getElementById('note-container').classList.remove('hidden');
+    }
+}
+
+function saveLocally() {
+    localStorage.setItem("relationship_quiz_answers", JSON.stringify(userAnswers));
+}
+
+function prevQuestion() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+    }
+}
+
+function nextQuestion() {
+    const q = rawQuestions[currentIndex];
+    if (!userAnswers[q.id] || !userAnswers[q.id].ans) {
+        if (!confirm("這一題你還沒有選擇答案喔！確定要跳到下一題嗎？")) {
+            return;
+        }
+    }
+
+    if (currentIndex < rawQuestions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+function finishQuiz() {
+    saveLocally();
+    const dataToExport = {
+        role: currentUserRole,
+        answers: userAnswers
+    };
+    const jsonStr = JSON.stringify(dataToExport);
+    const code = btoa(encodeURIComponent(jsonStr));
+    
+    document.getElementById('result-code-display').innerText = code;
+    showPage('page-finish');
+}
+
+function copyResultCode() {
+    const code = document.getElementById('result-code-display').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        alert("專屬結果碼已複製到剪貼簿！可以傳給我囉！");
+    });
+}
+
+function processComparison() {
+    const code1 = document.getElementById('code-abao').value.trim();
+    const code2 = document.getElementById('code-xiaoguai').value.trim();
+
+    if (!code1 || !code2) {
+        alert("請確保兩人的結果碼都有貼上喔！");
+        return;
+    }
+
+    try {
+        const parsed1 = JSON.parse(decodeURIComponent(atob(code1)));
+        const parsed2 = JSON.parse(decodeURIComponent(atob(code2)));
+
+        // 自動識別哪個是阿寶、哪個是小乖
+        let dataAbao = parsed1.role === '阿寶' ? parsed1.answers : (parsed2.role === '阿寶' ? parsed2.answers : parsed1.answers);
+        let dataXiaoguai = parsed1.role === '小乖' ? parsed1.answers : (parsed2.role === '小乖' ? parsed2.answers : parsed2.answers);
+
+        let totalLightQs = 0;
+        let sameCount = 0;
+
+        const listContainer = document.getElementById('comparison-list');
+        listContainer.innerHTML = '';
+
+        rawQuestions.forEach(q => {
+            const ans1 = dataAbao[q.id] || { ans: "未填" };
+            const ans2 = dataXiaoguai[q.id] || { ans: "未填" };
+
+            const isMatch = ans1.ans === ans2.ans;
+            if (q.type === 'light') {
+                totalLightQs++;
+                if (isMatch) sameCount++;
             }
-        }
 
-        function copyShareCode() {
-            const code = document.getElementById('share-code-box').innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                alert("已成功複製專屬連結代碼！您可以將此代碼傳給對方比對喔 🩵");
-            }).catch(() => {
-                alert("複製失敗，請手動複製上方框內的代碼");
-            });
-        }
+            const item = document.createElement('div');
+            item.className = 'compare-card';
+            
+            let colorTag = isMatch ? '<span class="compare-tag bg-green">答案一致</span>' : '<span class="compare-tag bg-red">想法不同</span>';
+            if (q.type === 'text') colorTag = '<span class="compare-tag bg-purple">問答交流</span>';
 
-        function restart() {
-            document.getElementById('ending-screen').classList.add('hidden');
-            document.getElementById('home-screen').classList.remove('hidden');
-        }
-
-        // --- 彈窗 Modal 與 代碼比對邏輯 ---
-        function openCompareModal() {
-            document.getElementById('compare-modal').classList.remove('hidden');
-        }
-
-        function closeCompareModal() {
-            document.getElementById('compare-modal').classList.add('hidden');
-        }
-
-        function resetCompareInput() {
-            document.getElementById('compare-input-section').classList.remove('hidden');
-            document.getElementById('compare-result-section').classList.add('hidden');
-        }
-
-        function decodeCode(code) {
-            try {
-                const jsonStr = decodeURIComponent(atob(code.trim()));
-                return JSON.parse(jsonStr);
-            } catch (e) {
-                return null;
-            }
-        }
-
-        function runComparison() {
-            const code1 = document.getElementById('code-input-1').value;
-            const code2 = document.getElementById('code-input-2').value;
-
-            const data1 = decodeCode(code1);
-            const data2 = decodeCode(code2);
-
-            if (!data1 || !data2) {
-                alert("專屬代碼格式不正確，請確認是否有複製完整！");
-                return;
-            }
-
-            document.getElementById('compare-input-section').classList.add('hidden');
-            const resultSection = document.getElementById('compare-result-section');
-            const resultList = document.getElementById('compare-result-list');
-            resultSection.classList.remove('hidden');
-
-            resultList.innerHTML = `
-                <div style="text-align:center; margin-bottom: 20px;">
-                    <h4 style="color: var(--primary-blue-dark); font-size: 1.1rem;">${data1.user || '阿寶'} ❤️ ${data2.user || '小乖'}</h4>
-                    <p style="font-size:0.85rem; color: var(--text-muted);">以下為兩人的問答比對結果：</p>
+            item.innerHTML = `
+                <div style="font-weight:bold; font-size:0.95em; margin-bottom:5px;">${q.text} ${colorTag}</div>
+                <div style="font-size:0.9em; color:#334155; margin-top:4px;">
+                    <strong>👦 阿寶：</strong> ${ans1.ans || '未填'} ${ans1.note ? `<br><small style="color:#64748B">💬 補充：${ans1.note}</small>` : ''}
+                </div>
+                <div style="font-size:0.9em; color:#334155; margin-top:4px;">
+                    <strong>👧 小乖：</strong> ${ans2.ans || '未填'} ${ans2.note ? `<br><small style="color:#64748B">💬 補充：${ans2.note}</small>` : ''}
                 </div>
             `;
+            listContainer.appendChild(item);
+        });
 
-            QUESTIONS.forEach(q => {
-                const ans1 = data1.ans[q.id] || '未填寫';
-                const ans2 = data2.ans[q.id] || '未填寫';
+        const matchPercent = Math.round((sameCount / totalLightQs) * 100) || 0;
+        document.getElementById('match-score').innerText = matchPercent + '%';
 
-                const formatAns = (val) => Array.isArray(val) ? val.join('、') : val;
+        showPage('page-compare-result');
 
-                const card = document.createElement('div');
-                card.className = 'compare-item-card';
+    } catch (e) {
+        alert("結果碼解析失敗，請確認代碼是否完整複製！");
+    }
+}
+</script>
 
-                card.innerHTML = `
-                    <div class="compare-item-title">${q.title}</div>
-                    <div class="compare-user-row">
-                        <span class="compare-user-tag">${data1.user || '阿寶'}：</span>
-                        <span>${formatAns(ans1)}</span>
-                    </div>
-                    <div class="compare-user-row">
-                        <span class="compare-user-tag" style="color: var(--primary-blue);">${data2.user || '小乖'}：</span>
-                        <span>${formatAns(ans2)}</span>
-                    </div>
-                `;
-                resultList.appendChild(card);
-            });
-        }
-    </script>
 </body>
 </html>
